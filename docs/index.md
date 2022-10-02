@@ -27,7 +27,3 @@ features:
     details: 采用 Islands 架构，意味着更少的 JavaScript 代码、局部 hydration， 从而带来更好的首屏性能。
     icon: ✨
 ---
-
-# yes
-
-no
