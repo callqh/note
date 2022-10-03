@@ -1,7 +1,8 @@
 import { defineConfig } from 'islandjs'
 
 export default defineConfig({
-  title: 'my-site',
+  title: "Liuqh's Note",
+  icon: '/note_2.png',
   themeConfig: {
     lang: 'zh',
     locales: {
@@ -11,13 +12,13 @@ export default defineConfig({
         selectText: '语言',
         ariaLabel: '语言',
         lastUpdatedText: '上次更新',
-        title: 'Island.js',
+        title: "Liuqh's Note",
         outlineTitle: '目录',
         prevPageText: '上一页',
         nextPageText: '下一页',
-        description: '基于孤岛架构的 SSG 框架',
+        description: 'hhhhhh',
         editLink: {
-          pattern: 'https://github.com/sanyuan0704/island.js/tree/master/docs/:path',
+          pattern: 'https://github.com/liuqh0609/note/tree/master/docs/:path',
           text: '📝 在 GitHub 上编辑此页',
         },
         nav: [
@@ -30,12 +31,19 @@ export default defineConfig({
         sidebar: {
           '/note': [
             {
-              text: '指南',
+              text: '有趣的',
               items: [
-                { text: '1', link: '/note' },
-                { text: '2', link: '/note/foo' },
+                { text: '简介', link: '/note/note' },
+                { text: '测试', link: '/note/foo' },
               ],
             },
+            // {
+            //   text: '无趣的',
+            //   items: [
+            //     { text: '简介', link: '/note/note' },
+            //     { text: '测试', link: '/note/foo' },
+            //   ],
+            // },
           ],
         },
       },
