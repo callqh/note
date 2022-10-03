@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /foo/
+      link: /note
     - theme: alt
       text: GitHub 地址
       link: https://github.com/liuqh0609

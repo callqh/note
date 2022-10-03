@@ -20,25 +20,25 @@ export default defineConfig({
           pattern: 'https://github.com/sanyuan0704/island.js/tree/master/docs/:path',
           text: '📝 在 GitHub 上编辑此页',
         },
-      },
-    },
-    nav: [
-      {
-        text: 'Home',
-        link: '/',
-        activeMatch: '^/$|^/',
-      },
-    ],
-    sidebar: [
-      {
-        text: 'Test',
-        items: [
+        nav: [
           {
-            text: 'Getting Started',
-            link: 'zh/test/haha',
+            text: '首页',
+            link: '/',
+            activeMatch: '^/$|^/',
           },
         ],
+        sidebar: {
+          '/note': [
+            {
+              text: '指南',
+              items: [
+                { text: '1', link: '/note' },
+                { text: '2', link: '/note/foo' },
+              ],
+            },
+          ],
+        },
       },
-    ],
+    },
   },
 })
