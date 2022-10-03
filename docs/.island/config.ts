@@ -35,6 +35,7 @@ export default defineConfig({
               items: [
                 { text: '简介', link: '/note/note' },
                 { text: '测试', link: '/note/foo' },
+                { text: '部署', link: '/note/deploy' },
               ],
             },
             // {
