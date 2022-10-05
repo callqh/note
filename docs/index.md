@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Enjoy
-      link: /note/note
+      link: /note/home
     - theme: alt
       text: GitHub
       link: https://github.com/liuqh0609
