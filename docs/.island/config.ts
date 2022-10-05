@@ -33,9 +33,7 @@ export default defineConfig({
             {
               text: '有趣的',
               items: [
-                { text: '简介', link: '/note/note' },
-                { text: '测试', link: '/note/foo' },
-                { text: '部署', link: '/note/deploy' },
+                { text: '简介', link: '/note/home' },
                 { text: '实现一键复制功能', link: '/note/copy' },
               ],
             },
