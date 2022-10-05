@@ -2,5 +2,10 @@
 
 # Liuqh's Note
 
-![GIF](./docs/public/1.gif)
+![图片去哪了？](./docs/public/home.jpg)
 
+记录一些有趣的，也许也是有用的。
+
+更多内容点击访问 👉：[liuqh-note](https://liuqh-note.netlify.com/)
+
+![GIF](./docs/public/1.gif)
