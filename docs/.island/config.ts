@@ -1,5 +1,18 @@
 import { defineConfig } from 'islandjs'
 
+const getSidebar = () => ({
+  '/note': [
+    {
+      text: '有趣的',
+      items: [
+        { text: '简介', link: '/note/home' },
+        { text: '模块热更新(HMR)', link: '/note/hmr' },
+        { text: '实现一键复制功能', link: '/note/copy' },
+      ],
+    },
+  ],
+})
+
 export default defineConfig({
   title: "Liuqh's Note",
   icon: '/note_2.png',
@@ -28,24 +41,7 @@ export default defineConfig({
             activeMatch: '^/$|^/',
           },
         ],
-        sidebar: {
-          '/note': [
-            {
-              text: '有趣的',
-              items: [
-                { text: '简介', link: '/note/home' },
-                { text: '实现一键复制功能', link: '/note/copy' },
-              ],
-            },
-            // {
-            //   text: '无趣的',
-            //   items: [
-            //     { text: '简介', link: '/note/note' },
-            //     { text: '测试', link: '/note/foo' },
-            //   ],
-            // },
-          ],
-        },
+        sidebar: getSidebar(),
       },
     },
   },

@@ -191,5 +191,5 @@ module.exports = copy
 
 - `copy-to-clipboard`是自己创建一个 `span` 标签，然后改变 `span` 标签为一个可选中的元素`user-select`，当选中元素时，触发 `copy` 事件，然后将选中的文本复制到剪切板中。
   > (为啥下面还使用了 `document.execCommand('copy')`，我也不知道，可能是兼容性问题吧？按道理来说，`copy` 事件触发后，剪切板中就已经有了文本，不需要再执行 `document.execCommand('copy')` 了吧？)
--
+  -
 - `vitepress` 中是用 `textarea` 元素来实现的，直接选中 `textarea` 中的文本，然后实现 `copy`
