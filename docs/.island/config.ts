@@ -13,7 +13,7 @@ const getSidebar = () => ({
     {
       text: '无趣的',
       items: [
-        { text: '当初为什么选择走这条路？', link: '/article/select' },
+        { text: '当初为什么选择走这条路？', link: '/article/choose' },
       ],
     },
   ],
