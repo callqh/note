@@ -233,4 +233,6 @@ import.meta.hot.data.count = 1
 当`hmr`发生后，浏览器的网络中在`ws`（`websocket`）中会接收到这样一条信息：
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/2705850/1665481590056-76ea9976-bce0-4810-8024-38be8a76c79b.png)
 这里记录这`hmr`产生`update`的一些信息。我们接下里就探究一下这个信息是如何产生的。
-TODO
+
+> 接下来我们探究一下在 vite 中当文件更新之后，整个 hmr 的执行流程是什么样的。
+> 请看下一篇。
