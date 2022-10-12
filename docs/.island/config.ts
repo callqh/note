@@ -3,7 +3,7 @@ import { defineConfig } from 'islandjs'
 const getSidebar = () => ({
   '/note': [
     {
-      text: '有趣的',
+      text: '总会有用',
       items: [
         { text: '简介', link: '/note/home' },
         { text: '模块热更新(HMR)', link: '/note/hmr' },
@@ -11,13 +11,21 @@ const getSidebar = () => ({
       ],
     },
     {
-      text: '无趣的',
+      text: '也许有用',
       items: [
         { text: '当初为什么选择走这条路？', link: '/article/choose' },
       ],
     },
   ],
 })
+
+const getNav = ()=>[
+    {
+       text: '首页',
+       link: '/',
+       activeMatch: '^/$|^/',
+    },
+]
 
 export default defineConfig({
   title: "Liuqh's Note",
@@ -39,13 +47,7 @@ export default defineConfig({
           pattern: 'https://github.com/liuqh0609/note/tree/master/docs/:path',
           text: '📝 在 GitHub 上编辑此页',
         },
-        nav: [
-          {
-            text: '首页',
-            link: '/',
-            activeMatch: '^/$|^/',
-          },
-        ],
+        nav: getNav(),
         sidebar: getSidebar(),
       },
     },
