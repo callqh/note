@@ -29,7 +29,6 @@ export default defineConfig({
         outlineTitle: '目录',
         prevPageText: '上一页',
         nextPageText: '下一页',
-        description: 'hhhhhh',
         editLink: {
           pattern: 'https://github.com/liuqh0609/note/tree/master/docs/:path',
           text: '📝 在 GitHub 上编辑此页',
