@@ -186,9 +186,9 @@ if (import.meta.hot) {
 
 #### on(event,cb)
 
-监听**自定义 **`**HMR**`** 事件**。
+监听**自定义 `HMR` 事件**。
 自定义 HMR 事件，是在服务端定义发送的。在 vite 中，我们可以在插件中完成这件事。
-`vite`插件中提供了`[handleHotUpdate](https://www.vitejs.net/guide/api-plugin.html#handleHotUpdate)`
+`vite`插件中提供了[`handleHotUpdate`](https://www.vitejs.net/guide/api-plugin.html#handleHotUpdate)
 
 ```typescript
 // vite-plugin.tx
@@ -209,7 +209,7 @@ handleHotUpdate({ server }) {
 ```
 
 > [https://github.com/sanyuan0704/island.js/pull/79](https://github.com/sanyuan0704/island.js/pull/79)
-> 有时自定义 hmr 事件，没有触发页面更新。我们可以利用监听自定义事件，来主动触发页面的`rerender`
+> 有时自定义 `hmr` 事件，没有触发页面更新。我们可以利用监听自定义事件，来主动触发页面的`rerender`
 
 #### data
 
@@ -234,5 +234,7 @@ import.meta.hot.data.count = 1
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/2705850/1665481590056-76ea9976-bce0-4810-8024-38be8a76c79b.png)
 这里记录这`hmr`产生`update`的一些信息。我们接下里就探究一下这个信息是如何产生的。
 
+
 > 接下来我们探究一下在 vite 中当文件更新之后，整个 hmr 的执行流程是什么样的。
 > 请看下一篇。
+
