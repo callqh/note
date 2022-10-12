@@ -10,6 +10,12 @@ const getSidebar = () => ({
         { text: '实现一键复制功能', link: '/note/copy' },
       ],
     },
+    {
+      text: '无趣的',
+      items: [
+        { text: '当初为什么选择走这条路？', link: '/article/choose' },
+      ],
+    },
   ],
 })
 
