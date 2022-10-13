@@ -6,26 +6,24 @@ const getSidebar = () => ({
       text: '总会有用',
       items: [
         { text: '简介', link: '/note/home' },
-        { text: 'HMR模块热更新（一）', link: '/note/hmr' },
-        { text: 'vite中的HMR流程（二）', link: '/note/hmr2' },
+        { text: 'HMR模块热更新（一）', link: '/note/hmr-api' },
+        { text: 'vite中的HMR流程（二）', link: '/note/hmr-vite' },
         { text: '实现一键复制功能', link: '/note/copy' },
       ],
     },
     {
       text: '也许有用',
-      items: [
-        { text: '当初为什么选择走这条路？', link: '/article/choose' },
-      ],
+      items: [{ text: '当初为什么选择走这条路？', link: '/article/choose' }],
     },
   ],
 })
 
-const getNav = ()=>[
-    {
-       text: '首页',
-       link: '/',
-       activeMatch: '^/$|^/',
-    },
+const getNav = () => [
+  {
+    text: '首页',
+    link: '/',
+    activeMatch: '^/$|^/',
+  },
 ]
 
 export default defineConfig({

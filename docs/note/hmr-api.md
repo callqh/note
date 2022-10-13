@@ -1,7 +1,7 @@
+## What（HMR 是什么？）
+
 > 我们下面讨论的`HMR`都是基于`vite`自身实现的一套`HMR`系统。
 > `vite`实现的`HMR`是根据 [ESM HMR 规范](https://github.com/FredKSchott/esm-hmr) 来实现的。
-
-## What（HMR 是什么？）
 
 `HMR`：`Hot Module Reload`模块热更新。
 之前当我们在编辑器中更新代码时，会触发浏览器的页面刷新，但是这个刷新是**全量刷新**，相当于`CMD+R`。这时页面的状态会被重置掉，总之体验不好。
@@ -29,7 +29,7 @@
 
 > `import.meta`是浏览器中内置的一个对象。【[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/import.meta)】
 
-```typescript
+```ts
 interface ImportMeta {
   readonly hot?: {
     readonly data: any
@@ -56,7 +56,7 @@ interface ImportMeta {
 当我们在文件中加入这行代码的时候，就是手动开启该文件模块的热更新。
 当这个文件中的代码产生更新时，就会接收此次热更新的结果。
 
-```typescript
+```ts
 if (import.meta.hot) {
   import.meta.hot.accept((mod) => {
     console.log(mod, '==')
@@ -69,7 +69,7 @@ if (import.meta.hot) {
 :::
 比如我们的文件是下面这样，导出了`render`和`other`：
 
-```typescript
+```ts
 export const render = () => {
   // ...
 }
@@ -94,7 +94,7 @@ if (import.meta.hot) {
 在上面的代码中，我们是向`accept`中传递了一个回调函数来主动触发热更新模块中的函数。因为我们这个文件中只是声明了`render`、`other`函数，并没有执行，所以需要在`accpet`的回调中手动触发才可以
 其实有些情况下也不用传回调函数。`accept`会把当前变更的文件中的最新内容执行一遍。就比如我们这个文件就是一个可执行文件（类似自执行函数），当我们`import`这个文件的时候，文件里的代码就会执行，例如下面的情况：
 
-```typescript
+```ts
 // render.ts
 const render = () => {
   const app = document.querySelector<HTMLDivElement>('#app')!
@@ -123,13 +123,13 @@ import './render.tx'’
 `accept`方法中也可以接收一个`dep`参数，也就是当前页面热更新时所依赖的**子模块的路径**。
 这个`dep`参数，可以是一个单独字符串，也可以是一个字符串数组，当是数组时说明**依赖多个子模块**
 
-```typescript
+```ts
 //main.ts
 import { render } from './render'
-import { initState } from './state'
+import { initsate } from './state'
 
 render()
-initState()
+initsate()
 
 if (import.meta.hot) {
   import.meta.hot.accept('./render.ts', (mod) => {
@@ -144,19 +144,19 @@ if (import.meta.hot) {
 > 因为此时没有依赖`state`文件，所以当`state`文件发生变更时会`**reload page**`，而不会热更新。
 > 因为此时热更新的边界仅仅是`render`模块，只有`render`模块中的变更才会触发`main`的热更新
 
-```typescript
+```ts
 //main.ts
 import { render } from './render'
-import { initState } from './state'
+import { initsate } from './state'
 
 render()
-initState()
+initsate()
 
 if (import.meta.hot) {
   import.meta.hot.accept(['./render.ts', './state.ts'], ([mod1, mod2]) => {
     console.log(mod1, mod2, '==')
     mod1?.render()
-    mod2?.initState()
+    mod2?.initsate()
   })
 }
 ```
@@ -169,7 +169,7 @@ if (import.meta.hot) {
 
 这个函数就是比较简单。就是在**新模块更新前 旧模块销毁时**的钩子。用来清理掉旧模块中的一些副作用。
 
-```typescript
+```ts
 const timerId = setInterval(() => {
   countEle.innerText = Number(countEle.innerText) + 1 + ''
 }, 1000)
@@ -190,7 +190,7 @@ if (import.meta.hot) {
 自定义 HMR 事件，是在服务端定义发送的。在 vite 中，我们可以在插件中完成这件事。
 `vite`插件中提供了[`handleHotUpdate`](https://www.vitejs.net/guide/api-plugin.html#handleHotUpdate)
 
-```typescript
+```ts
 // vite-plugin.tx
 // 省略其他代码
 handleHotUpdate({ server }) {
@@ -216,7 +216,7 @@ handleHotUpdate({ server }) {
 该属性用来共享**同一个模块中**更新前后的数据。
 在这里面绑定的数据，不会被`hmr`影响或重置。
 
-```typescript
+```ts
 import.meta.hot.data.count = 1
 ```
 
@@ -228,13 +228,8 @@ import.meta.hot.data.count = 1
 
 重新加载页面。
 
-## 其他
+## 下回书
 
-当`hmr`发生后，浏览器的网络中在`ws`（`websocket`）中会接收到这样一条信息：
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/2705850/1665481590056-76ea9976-bce0-4810-8024-38be8a76c79b.png)
-这里记录这`hmr`产生`update`的一些信息。我们接下里就探究一下这个信息是如何产生的。
-
-
-> 接下来我们探究一下在 vite 中当文件更新之后，整个 hmr 的执行流程是什么样的。
-> 请看下一篇。
-
+:::tip
+请看下一篇[文章](./note/hmr-vite.md)
+:::
