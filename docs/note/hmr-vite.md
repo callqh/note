@@ -497,7 +497,11 @@ async function fetchUpdate({ path, acceptedPath, timestamp, explicitImportRequir
 
 :::danger
 **总结：**
-`const newMod = await import( /* @vite-ignore */ `path + import&t=${timestamp}${query }`);`
+
+```ts
+const newMod = await import(/* @vite-ignore */ `path + import&t=${timestamp}${query}`)
+```
+
 在重新导入模块后，会发送新的请求，来请求最新的模块内容
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/2705850/1665646957456-7244e825-4371-4c4f-855d-ea47885f6ea3.png#clientId=uec076e67-2941-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=398&id=uebfdb7d0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=398&originWidth=1856&originalType=binary&ratio=1&rotation=0&showTitle=false&size=109666&status=done&style=none&taskId=u49fc6e14-613d-4670-8270-997dd54fe50&title=&width=1856)
 :::
@@ -522,9 +526,8 @@ async function fetchUpdate({ path, acceptedPath, timestamp, explicitImportRequir
 
 其实会有个疑问，**这个数据里的 fn 是哪里来的？**`hotModulesMap`又是哪来的？
 这里我们就需要继续往下看！
-我们先来看下我们在更新模块内容之后，请求回来的文件长什么样？（我们这里还是更改的`render.ts`)
 
-> `vite:import-analysis` 插件进行注入的
+我们先来看下我们在更新模块内容之后，请求回来的文件长什么样？（我们这里还是更改的`render.ts`)
 
 ```typescript
 import { createHotContext as __vite__createHotContext } from '/@vite/client'
@@ -547,9 +550,9 @@ if (import.meta.hot) {
   import.meta.hot.data.count = 1
   import.meta.hot.accept((mod) => mod?.render())
 }
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9scWgvbHFoL3Rlc3Qvc3JjL3JlbmRlci50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3QgcmVuZGVyID0gKCkgPT4ge1xuICBjb25zdCBhcHAgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yPEhUTUxEaXZFbGVtZW50PignI2FwcCcpIVxuICBhcHAuaW5uZXJIVE1MID0gYFxuICAgIDxoMT5IZWxsb3NzIFZpdGUxMmQ8L2gxPlxuICAgIDxwIGlkPVwicFwiPuaYr+aYr2ZmZuaSkuWPkemhuuS4sOaYr2RmZO+8gXNvb2/vvJ88L3A+XG4gIGBcbn1cblxuZXhwb3J0IGNvbnN0IG90aGVyID0gKCkgPT4ge1xuICBjb25zdCBwID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcjxIVE1MRGl2RWxlbWVudD4oJyNwJykhXG4gIHAuaW5uZXJIVE1MID0gYFxuICAgIDxwPm90aGVyPC9wPlxuICBgXG59XG5cbmlmIChpbXBvcnQubWV0YS5ob3QpIHtcbiAgaW1wb3J0Lm1ldGEuaG90LmRhdGEuY291bnQgPSAxXG4gIGltcG9ydC5tZXRhLmhvdC5hY2NlcHQoKG1vZCkgPT4gbW9kPy5yZW5kZXIoKSlcbn1cblxuLy8g56ys5LiA5q2lXG4vLyBpZiAoaW1wb3J0Lm1ldGEuaG90KSB7XG4vLyAgIGltcG9ydC5tZXRhLmhvdC5hY2NlcHQoKG1vZCkgPT4gY29uc29sZS5sb2cobW9kKSlcbi8vIH1cblxuLy8ge1xuLy8gICBcImlkXCI6IFwiL3NyYy9yZW5kZXIudHNcIixcbi8vICAgXCJjYWxsYmFja3NcIjogW1xuLy8gICAgIHtcbi8vICAgICAgIFwiZGVwc1wiOiBbXG4vLyAgICAgICAgIFwiL3NyYy9yZW5kZXIudHNcIlxuLy8gICAgICAgXVxuLy8gICAgIH1cbi8vICAgXVxuLy8gfVxuIl0sIm1hcHBpbmdzIjoiQUFBTyxhQUFNLFNBQVMsTUFBTTtBQUMxQixRQUFNLE1BQU0sU0FBUyxjQUE4QixNQUFNO0FBQ3pELE1BQUksWUFBWTtBQUFBO0FBQUE7QUFBQTtBQUlsQjtBQUVPLGFBQU0sUUFBUSxNQUFNO0FBQ3pCLFFBQU0sSUFBSSxTQUFTLGNBQThCLElBQUk7QUFDckQsSUFBRSxZQUFZO0FBQUE7QUFBQTtBQUdoQjtBQUVBLElBQUksWUFBWSxLQUFLO0FBQ25CLGNBQVksSUFBSSxLQUFLLFFBQVE7QUFDN0IsY0FBWSxJQUFJLE9BQU8sQ0FBQyxRQUFRLEtBQUssT0FBTyxDQUFDO0FBQy9DOyIsIm5hbWVzIjpbXX0=
 ```
+
+> `vite:import-analysis` 插件进行注入的
 
 可以看到，在我们文件的头部是被注入了`createHotContext`的，并且重写了我们的`import.meta.hot`中的内容为`createHotContext`的返回值。
 
@@ -656,7 +659,7 @@ export function createHotContext(ownerPath: string): ViteHotContext {
 
 对于上面这个的`createHotContext`函数我们分为两部分来看：
 
-1. 先看返回值`hot`, 这里总结来说就是重写上一篇中我们提到过的`hmr`相关的`API`。 我们重点关注`accept`函数，这里对`accept`函数的三种不同使用方式进行处理
+1. 先看返回值`hot`, 这里总结来说就是重写上一篇中我们提到过的`hmr`相关的`API`。 我们重点关注`accept`函数，这里对`accept`函数的三种不同使用方式进行处理:
    1. 第一种情况就是：`import.meta.accetpt(mod=>{})`
    2. 第二种情况是：`import.meta.accetpt('xxx', mod=>{})`
    3. 第三种情况是：`import.meta.accetpt(['xxx','xxxx'], mod=>{})`
@@ -665,7 +668,12 @@ export function createHotContext(ownerPath: string): ViteHotContext {
 **参数：**
 
 1.  `deps`: 第一种情况下，其实就是传入的本身的路径，其他情况下是在`accpet`中主动声明的依赖
-2.  `callback`： 1. 第一种情况下，是重新注入的`([mod]) => deps && deps(mod)`，这里的`deps`其实就是我们传入的回调`mod=>{}` 2. 第二种情况下，也是重新注入的`([mod]) => callback && callback(mod)`,这里的`callback`是我们在 accept 中传入的第二个参数`import.meta.accetpt('xxx', mod=>{})` 3. 第三种情况就没怎么处理，将两个参数依次传入就好了
+2.  `callback`：
+
+    1. 第一种情况下，是重新注入的`([mod]) => deps && deps(mod)`，这里的`deps`其实就是我们传入的回调`mod=>{}`
+    2. 第二种情况下，也是重新注入的`([mod]) => callback && callback(mod)`,这里的`callback`是我们在 accept 中传入的第二个参数`import.meta.accetpt('xxx', mod=>{})`
+    3. 第三种情况就没怎么处理，将两个参数依次传入就好了
+
     > 我们上面的疑问 ❓：
     > 这个 fn 是哪里来的？ 其实就是在重新 accpet 时
     > `acceptDeps([ownerPath], ([mod]) => deps && deps(mod))`中注入的
