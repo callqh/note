@@ -1,10 +1,13 @@
 {
+  "name": "Liuqh's note",
+  "type": "module",
   "scripts": {
     "dev": "island dev docs",
     "build": "island build docs",
     "preview": "island start docs"
   },
   "dependencies": {
-    "islandjs": "0.4.3"
+    "islandjs": "0.4.3",
+    "unist-util-visit": "^4.1.1"
   }
 }

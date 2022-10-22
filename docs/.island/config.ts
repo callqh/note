@@ -1,4 +1,5 @@
 import { defineConfig } from 'islandjs'
+import { FixYuQueImgForbidden } from './plugins/yuque-img'
 
 const getSidebar = () => ({
   '/note': [
@@ -24,6 +25,10 @@ const getNav = () => [
     text: '首页',
     link: '/',
     activeMatch: '^/$|^/',
+  },
+  {
+    text: 'Github',
+    link: 'http://github.com/liuqh0609',
   },
 ]
 
@@ -51,5 +56,8 @@ export default defineConfig({
         sidebar: getSidebar(),
       },
     },
+  },
+  markdown: {
+    rehypePlugins: [FixYuQueImgForbidden],
   },
 })
