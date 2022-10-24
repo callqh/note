@@ -1,3 +1,7 @@
+:::tip
+原文：[在你写 memo()之前](https://overreacted.io/zh-hans/before-you-memo/)
+:::
+
 ## 文章内容
 
 大概意思就是在你写`memo()`去优化组件的时候还有两种方式去优化代码。
@@ -244,6 +248,6 @@ export default App
 
 ## 总结
 
-1. **下沉**`**state**`。在不变中抽离中变化的部分，将`state`与变化的部分绑定为同一个组件。
+1. **下沉`state`**。在不变中抽离中变化的部分，将`state`与变化的部分绑定为同一个组件。
 2. **内容提升**。子组件的`re-render`是不会影响`props`的，即与`props`无关。所以我们可以通过`props`的方法传递无关的组件，来避免`re-render`。
    1. 除了`props.children`之外那用其他 `props` 属性可以吗？比如 `<Changed left={<Expansive1 />} right={<Expansive2 />} />`，` <Changed />``re-render ` 并不会导致 ` <Expansive />`` re-render `。这种方法叫「`componets as props`」。
