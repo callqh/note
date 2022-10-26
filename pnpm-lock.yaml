@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  islandjs: 0.5.0
+  islandjs: 0.5.1
   unist-util-visit: ^4.1.1
 
 dependencies:
-  islandjs: 0.5.0
+  islandjs: 0.5.1
   unist-util-visit: 4.1.1
 
 packages:
@@ -362,6 +362,12 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@iconify-json/carbon/1.1.9:
+    resolution: {integrity: sha512-O3geRhhnE9dDDC4oT6qwBs7sdc37R9UqftiG7BP8YVDw8OcXv8i95J0ZEkIfdOXFj1Wb6kC/Uu/6VTlAqotVXg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
 
   /@iconify/types/2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2240,13 +2246,14 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: false
 
-  /islandjs/0.5.0:
-    resolution: {integrity: sha512-1pw35hHXMrSLmQZWoP+JAl/ylA1vbnkEBUgjxNC7j1HRTGrEa1o2VKfLN0/jL3j3wT/RVOITGeM2GBo0DU0+4Q==}
+  /islandjs/0.5.1:
+    resolution: {integrity: sha512-31zp1Dl8obMtP7NDMrr6TnR7IZEBi8PDGi3WFcvAi2ziIdX1TpnyfQjviadwcrP4J7lILvcmXB1fVWerDky8nQ==}
     hasBin: true
     dependencies:
       '@babel/core': 7.19.3
       '@babel/helper-plugin-utils': 7.19.0
       '@babel/preset-react': 7.18.6_@babel+core@7.19.3
+      '@iconify-json/carbon': 1.1.9
       '@mdx-js/mdx': 2.1.3
       '@mdx-js/react': 2.1.3_react@18.2.0
       '@mdx-js/rollup': 2.1.3
