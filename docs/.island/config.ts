@@ -11,6 +11,7 @@ const getSidebar = () => ({
         { text: 'HMR模块热更新（一）', link: '/note/hmr-api' },
         { text: 'vite中的HMR流程（二）', link: '/note/hmr-vite' },
         { text: 'react中的re-render', link: '/note/re-render' },
+        { text: 'turborepo笔记', link: '/note/turborepo' },
         { text: '实现一键复制功能', link: '/note/copy' },
         { text: '死链检测', link: '/note/deadLink' },
       ],
