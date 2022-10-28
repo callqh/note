@@ -10,6 +10,7 @@ const getSidebar = () => ({
         { text: 'TODO', link: '/note/todo' },
         { text: 'HMR模块热更新（一）', link: '/note/hmr-api' },
         { text: 'vite中的HMR流程（二）', link: '/note/hmr-vite' },
+        { text: '认识 CSR & SSR & hydrate', link: '/note/CSR&SSR&hydrate' },
         { text: 'react中的re-render', link: '/note/re-render' },
         { text: 'react中的cache方法', link: '/note/cache' },
         { text: 'turborepo笔记', link: '/note/turborepo' },
