@@ -7,7 +7,7 @@
     "preview": "island start docs"
   },
   "dependencies": {
-    "islandjs": "0.6.4",
+    "islandjs": "0.6.5",
     "unist-util-visit": "^4.1.1"
   }
 }
